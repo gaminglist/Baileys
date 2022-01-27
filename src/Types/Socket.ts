@@ -1,7 +1,7 @@
 
 import type { Agent } from 'https'
 import type NodeCache from 'node-cache'
-import type { Logger } from 'pino'
+import type Logger from 'pino'
 import type { URL } from 'url'
 import { MediaConnInfo } from './Message'
 
@@ -22,7 +22,7 @@ export type CommonSocketConfig<T> = {
     /** proxy agent */
 	agent?: Agent
     /** pino logger */
-	logger: Logger
+	logger: Logger.Logger
     /** version to connect with */
     version: WAVersion
     /** override browser config */

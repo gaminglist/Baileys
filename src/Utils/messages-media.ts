@@ -7,7 +7,7 @@ import { createReadStream, createWriteStream, promises as fs, WriteStream } from
 import type { IAudioMetadata } from 'music-metadata'
 import { tmpdir } from 'os'
 import { join } from 'path'
-import type { Logger } from 'pino'
+import type Logger from 'pino'
 import { Readable, Transform } from 'stream'
 import { URL } from 'url'
 import { DEFAULT_ORIGIN, MEDIA_PATH_MAP } from '../Defaults'
@@ -210,7 +210,7 @@ export async function generateThumbnail(
 	file: string, 
 	mediaType: 'video' | 'image', 
 	options: {
-        logger?: Logger
+        logger?: Logger.Logger
     }
 ) {
 	let thumbnail: string
@@ -243,7 +243,7 @@ export const encryptedStream = async(
 	media: WAMediaUpload, 
 	mediaType: MediaType,
 	saveOriginalFileIfRequired = true,
-	logger?: Logger
+	logger?: Logger.Logger
 ) => {
 	const { stream, type } = await getStream(media)
 

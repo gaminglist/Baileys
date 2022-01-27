@@ -1,5 +1,5 @@
 import type NodeCache from 'node-cache'
-import type { Logger } from 'pino'
+import type Logger from 'pino'
 import type { Readable } from 'stream'
 import type { URL } from 'url'
 import { proto } from '../../WAProto'
@@ -152,7 +152,7 @@ export type MessageGenerationOptionsFromContent = MiscMessageGenerationOptions &
 export type WAMediaUploadFunction = (readStream: Readable, opts: { fileEncSha256B64: string, mediaType: MediaType, timeoutMs?: number }) => Promise<{ mediaUrl: string, directPath: string }>
 
 export type MediaGenerationOptions = {
-	logger?: Logger
+	logger?: Logger.Logger
     upload: WAMediaUploadFunction
     /** cache media so it does not have to be uploaded again */
     mediaCache?: NodeCache

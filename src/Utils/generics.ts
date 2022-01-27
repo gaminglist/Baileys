@@ -1,7 +1,7 @@
 import { Boom } from '@hapi/boom'
 import { randomBytes } from 'crypto'
 import { platform, release } from 'os'
-import { Logger } from 'pino'
+import Logger from 'pino'
 import { proto } from '../../WAProto'
 import { CommonBaileysEventEmitter, DisconnectReason } from '../Types'
 import { Binary } from '../WABinary'
@@ -221,7 +221,7 @@ export const bindWaitForConnectionUpdate = (ev: CommonBaileysEventEmitter<any>) 
 	}
 )
 
-export const printQRIfNecessaryListener = (ev: CommonBaileysEventEmitter<any>, logger: Logger) => {
+export const printQRIfNecessaryListener = (ev: CommonBaileysEventEmitter<any>, logger: Logger.Logger) => {
 	ev.on('connection.update', async({ qr }) => {
 		if(qr) {
 			const QR = await import('qrcode-terminal')

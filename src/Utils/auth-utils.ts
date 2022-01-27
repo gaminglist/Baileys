@@ -1,6 +1,6 @@
 import { Boom } from '@hapi/boom'
 import { randomBytes } from 'crypto'
-import type { Logger } from 'pino'
+import type Logger from 'pino'
 import { proto } from '../../WAProto'
 import type { AuthenticationCreds, AuthenticationState, SignalDataSet, SignalDataTypeMap, SignalKeyStore, SignalKeyStoreWithTransaction } from '../Types'
 import { Curve, signedKeyPair } from './crypto'
@@ -15,7 +15,7 @@ const KEY_MAP: { [T in keyof SignalDataTypeMap]: string } = {
 	'sender-key-memory': 'senderKeyMemory'
 }
 
-export const addTransactionCapability = (state: SignalKeyStore, logger: Logger): SignalKeyStoreWithTransaction => {
+export const addTransactionCapability = (state: SignalKeyStore, logger: Logger.Logger): SignalKeyStoreWithTransaction => {
 	let inTransaction = false
 	let transactionCache: SignalDataSet = { }
 	let mutations: SignalDataSet = { }
@@ -113,7 +113,7 @@ export const initAuthCreds = (): AuthenticationCreds => {
 }
 
 /** stores the full authentication state in a single JSON file */
-export const useSingleFileAuthState = (filename: string, logger?: Logger): { state: AuthenticationState, saveState: () => void } => {
+export const useSingleFileAuthState = (filename: string, logger?: Logger.Logger): { state: AuthenticationState, saveState: () => void } => {
 	// require fs here so that in case "fs" is not available -- the app does not crash
 	const { readFileSync, writeFileSync, existsSync } = require('fs')
 	let creds: AuthenticationCreds

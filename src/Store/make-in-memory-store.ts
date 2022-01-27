@@ -1,6 +1,6 @@
 import type KeyedDB from '@adiwajshing/keyed-db'
 import type { Comparable } from '@adiwajshing/keyed-db/lib/Types'
-import type { Logger } from 'pino'
+import type Logger from 'pino'
 import { proto } from '../../WAProto'
 import { DEFAULT_CONNECTION_CONFIG } from '../Defaults'
 import type makeLegacySocket from '../LegacySocket'
@@ -22,7 +22,7 @@ export const waMessageID = (m: WAMessage) => m.key.id
 
 export type BaileysInMemoryStoreConfig = {
 	chatKey?: Comparable<Chat, string>
-	logger?: Logger
+	logger?: Logger.Logger
 }
 
 const makeMessagesDictionary = () => makeOrderedDictionary(waMessageID)
